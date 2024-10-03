@@ -5,9 +5,9 @@ pipeline {
         REPO_URL = 'https://github.com/JaswantSharma/devops_sample'
         BRANCH_NAME = 'jaswant'
 
-        SOURCE_DIR = '\\wsl.localhost\Ubuntu\var\lib\jenkins\workspace\CPP_ADD_ME'
-        DEST_DIR = '\\wsl.localhost\Ubuntu\home\droidude\Programs\Add_me_build'
-        SH_SCRIPT = '\\wsl.localhost\Ubuntu\home\droidude\Programs\Add_me_build\\script.sh'
+        SOURCE_DIR = '\\\\wsl.localhost\\Ubuntu\\var\\lib\\jenkins\\workspace\\CPP_ADD_ME'
+        DEST_DIR = '\\\\wsl.localhost\\Ubuntu\\home\\droidude\\Programs\\Add_me_build'
+        SH_SCRIPT = '\\\\wsl.localhost\\Ubuntu\\home\\droidude\\Programs\\Add_me_build\\script.sh'
         
     }
 
