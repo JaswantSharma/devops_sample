@@ -26,6 +26,8 @@ pipeline {
                 // Run the buildscript.bat with the defined environment variables
                 echo "Copying files and running the build script..."
                 sh """
+                
+                dos2unix BuildScripts/buildScript.sh
 
                 export SOURCE_DIR=${SOURCE_DIR}
                 export DEST_DIR=${DEST_DIR}
