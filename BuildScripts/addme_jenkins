@@ -24,12 +24,13 @@ pipeline {
         stage('Build Script Execution') {
             steps {
                 // Run the buildscript.bat with the defined environment variables
-                bat """
-                set SOURCE_DIR=%SOURCE_DIR%
-                set DEST_DIR=%DEST_DIR%
-                set SH_SCRIPT=%SH_SCRIPT%
-                call buildscript.bat
-                """
+                
+                #!/bin/bash
+                export SOURCE_DIR=${SOURCE_DIR}
+                export DEST_DIR=${DEST_DIR}
+                export SH_SCRIPT=${SH_SCRIPT}
+                bash  buildscript.sh
+                
             }
         }
         

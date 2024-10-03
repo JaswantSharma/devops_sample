@@ -3,9 +3,8 @@
 set -e  # Exit immediately if a command exits with a non-zero status
 
 # Step 1: Define the destination directory and result folder variables
-DEST_DIR="/path/to/destination"  # Update with your actual destination path
-SOURCE_DIR="/path/to/source"      # Update with your actual source path
-SH_SCRIPT="path/to/script.sh"     # Update with your actual script path
+   # Update with your actual source path
+   # Update with your actual script path
 RESULT_FOLDER="$DEST_DIR/result"
 
 # Step 2: Create the destination directory if it doesn't exist
