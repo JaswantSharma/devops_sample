@@ -30,7 +30,7 @@ pipeline {
                 export SOURCE_DIR=${SOURCE_DIR}
                 export DEST_DIR=${DEST_DIR}
                 export SH_SCRIPT=${SH_SCRIPT}
-                bash  buildscript.sh
+                bash  BuildScripts/buildscript.sh
                 
                 """
             }
