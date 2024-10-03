@@ -1,0 +1,59 @@
+pipeline {
+    agent any 
+
+    environment {
+        REPO_URL = 'https://github.com/JaswantSharma/devops_sample'
+        BRANCH_NAME = 'jaswant'
+        // Add other environment variables as needed
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                script {
+                    // Clone the specified branch
+                    git branch: env.BRANCH_NAME, url: env.REPO_URL
+                }
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                // Add your build commands here
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Add your test commands here
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Add your deployment commands here
+            }
+        }
+        
+        // stage('Cleanup') {
+        //     steps {
+        //         echo 'Cleaning up temporary files...'
+        //         // Add your cleanup commands here
+        //         // Example: delete workspace files or temporary directories
+        //         cleanWs() // This cleans the workspace, removing all files and directories
+        //     }
+        // }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Please check the logs.'
+        }
+    }
+}
