@@ -5,6 +5,8 @@ set -e  # Exit immediately if a command exits with a non-zero status
 # Step 1: Define the destination directory and result folder variables
    # Update with your actual source path
    # Update with your actual script path
+sudo -s
+
 RESULT_FOLDER="$DEST_DIR/result"
 
 # Step 2: Create the destination directory if it doesn't exist
@@ -16,6 +18,8 @@ cp -r "$SOURCE_DIR/test" "$DEST_DIR/test"
 cp "$SOURCE_DIR/Makefile" "$DEST_DIR/Makefile"
 
 # Step 3: Run the .sh script
+dos2unix "$SH_SCRIPT"
+
 bash "$SH_SCRIPT"
 
 # Step 4: Create the result directory if it doesn't exist
@@ -32,3 +36,5 @@ cp -r "$RESULT_FOLDER" "$SOURCE_DIR/result"
 rm -rf "$DEST_DIR"
 
 echo "Script completed successfully."
+
+exit
