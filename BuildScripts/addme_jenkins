@@ -4,7 +4,11 @@ pipeline {
     environment {
         REPO_URL = 'https://github.com/JaswantSharma/devops_sample'
         BRANCH_NAME = 'jaswant'
-        // Add other environment variables as needed
+
+        SOURCE_DIR = '\\wsl.localhost\Ubuntu\var\lib\jenkins\workspace\CPP_ADD_ME'
+        DEST_DIR = '\\wsl.localhost\Ubuntu\home\droidude\Programs\Add_me_build'
+        SH_SCRIPT = '\\wsl.localhost\Ubuntu\home\droidude\Programs\Add_me_build\\script.sh'
+        
     }
 
     stages {
@@ -17,10 +21,15 @@ pipeline {
             }
         }
         
-        stage('Build') {
+        stage('Build Script Execution') {
             steps {
-                echo 'Building the application...'
-                // Add your build commands here
+                // Run the buildscript.bat with the defined environment variables
+                bat """
+                set SOURCE_DIR=%SOURCE_DIR%
+                set DEST_DIR=%DEST_DIR%
+                set SH_SCRIPT=%SH_SCRIPT%
+                call buildscript.bat
+                """
             }
         }
         
