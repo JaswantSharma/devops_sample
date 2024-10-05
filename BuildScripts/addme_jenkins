@@ -1,0 +1,73 @@
+pipeline {
+    agent any 
+
+    environment {
+        REPO_URL = 'https://github.com/JaswantSharma/devops_sample'
+        BRANCH_NAME = 'jaswant'
+
+        SOURCE_DIR = '/var/lib/jenkins/workspace/CPP_ADD_ME'
+        DEST_DIR = '/home/droidude/Programs/Add_me_build'
+        SH_SCRIPT = '/home/droidude/Programs/Add_me_build/script.sh'
+        
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                script {
+                    // Clone the specified branch
+                    git branch: env.BRANCH_NAME, url: env.REPO_URL
+                }
+            }
+        }
+        
+        stage('Build Script Execution') {
+            steps {
+                // Run the buildscript.bat with the defined environment variables
+                echo "Copying files and running the build script..."
+                sh """
+
+                dos2unix BuildScripts/buildScript.sh
+
+                export SOURCE_DIR=${SOURCE_DIR}
+                export DEST_DIR=${DEST_DIR}
+                export SH_SCRIPT=${SH_SCRIPT}
+                bash  BuildScripts/buildScript.sh
+                
+                """
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Add your test commands here
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Add your deployment commands here
+            }
+        }
+        
+        // stage('Cleanup') {
+        //     steps {
+        //         echo 'Cleaning up temporary files...'
+        //         // Add your cleanup commands here
+        //         // Example: delete workspace files or temporary directories
+        //         cleanWs() // This cleans the workspace, removing all files and directories
+        //     }
+        // }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Please check the logs.'
+        }
+    }
+}

@@ -24,4 +24,4 @@ mymain.o: src/mymain.cpp
 
 # Clean up generated files
 clean:
-	rm -rf src\*.o add_me
+	rm -rf ./src/*.o add_me
